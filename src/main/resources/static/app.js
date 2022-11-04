@@ -5,7 +5,7 @@ function fillTable(data) {
         let object = data[json];
         let id_producto = object.id;
         let nombre_producto = object.nombre;
-        let descripcion_produdcto = object.description;
+        let descripcion_produdcto = object.descripcion;
 
         let row = table.insertRow()
 
