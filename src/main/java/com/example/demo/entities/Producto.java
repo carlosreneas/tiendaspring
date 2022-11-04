@@ -1,24 +1,19 @@
 package com.example.demo.entities;
 
-
-
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 
 import lombok.Data;
 
 @Entity
+@Table(name="producto2")
 @Data
 public class Producto implements Serializable {
 	
 	@Id
-	@SequenceGenerator(name="producto_id_seq", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="producto_id_seq")
+	@SequenceGenerator(name="producto2_id_seq", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="producto2_id_seq")
 	private Integer id;
 	
 	private String nombre;
