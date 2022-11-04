@@ -80,7 +80,7 @@ public class UsuarioController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public Usuario deleteusuariosbyId(@PathVariable Integer id) {
+	public Usuario deleteUsuariosbyId(@PathVariable Integer id) {
 		
 		Optional<Usuario> usuario = usuarioRepository.findById(id);
 		
