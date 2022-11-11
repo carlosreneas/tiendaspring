@@ -17,7 +17,7 @@ import com.example.demo.repository.ProductoRepository;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+//@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/productos")
 public class ProductoController {

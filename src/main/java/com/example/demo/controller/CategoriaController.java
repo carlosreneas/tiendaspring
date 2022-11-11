@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entities.Categoria;
+import com.example.demo.entities.Producto;
 import com.example.demo.repository.CategoriaRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+//@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/categorias")
 public class CategoriaController {
@@ -90,6 +91,20 @@ public class CategoriaController {
 			categoriaRepository.deleteById(id);
 			
 			return categoriaReturn;
+		}
+		
+		return null;
+
+	}
+	
+	
+	@GetMapping("/{descripcion}/productos")
+	public List<Producto> getProductosbyDescripcion(@PathVariable String descripcion) {
+		
+		List<Categoria> categoria = categoriaRepository.findByDescripcion(descripcion);
+		
+		if (!categoria.isEmpty()) {
+			return categoria.get(0).getProductos();
 		}
 		
 		return null;
