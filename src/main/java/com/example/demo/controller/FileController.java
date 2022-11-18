@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -47,9 +48,18 @@ public class FileController {
 	  @ResponseBody
 	  public ResponseEntity<Resource> viewFile(@PathVariable String filename, @PathVariable String ubicacion) {
 	    Resource file = fileService.loadFile(filename, ubicacion);
-	    return ResponseEntity.ok()
-	        .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + file.getFilename() + "\"")
-	        .body(file);
+	    
+	    HttpHeaders headers = new HttpHeaders();
+
+	    headers.add("content-disposition", "inline; filename="+file.getFilename());
+	    headers.setContentType(MediaType.parseMediaType("image/jpeg"));
+	    
+	    ResponseEntity<Resource> response = new ResponseEntity<Resource>(
+	            file, headers, HttpStatus.OK);
+
+	    return response;
+	    
+
 	  }
 	
 }
