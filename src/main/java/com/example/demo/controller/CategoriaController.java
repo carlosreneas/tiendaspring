@@ -18,7 +18,7 @@ import com.example.demo.repository.CategoriaRepository;
 import java.util.List;
 import java.util.Optional;
 
-//@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/categorias")
 public class CategoriaController {
